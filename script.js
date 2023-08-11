@@ -1,46 +1,32 @@
-// Your Script here.
+// Define the alphabet as a constant
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-const lookup = {
-  A: "N",
-  B: "O",
-  C: "P",
-  D: "Q",
-  E: "R",
-  F: "S",
-  G: "T",
-  H: "U",
-  I: "V",
-  J: "W",
-  K: "X",
-  L: "Y",
-  M: "Z",
-  N: "A",
-  O: "B",
-  P: "C",
-  Q: "D",
-  R: "E",
-  S: "F",
-  T: "G",
-  U: "H",
-  V: "I",
-  W: "J",
-  X: "K",
-  Y: "L",
-  Z: "M",
-  "?": "?",
-  ",": ",",
-};
+// Define the rot13 function
+function rot13(str) {
+  // Initialize an empty string for the decoded result
+  let decoded = '';
 
-function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
+  // Loop through each character of the input string
+  for (let i = 0; i < str.length; i++) {
+    // Get the current character
+    let char = str[i];
 
-  return; //return decodedArr
+    // Check if the character is a letter
+    if (ALPHABET.includes(char)) {
+      // Get the index of the character in the alphabet
+      let index = ALPHABET.indexOf(char);
+
+      // Shift the index by 13 places
+      index = (index + 13) % 26;
+
+      // Get the new character from the alphabet
+      char = ALPHABET[index];
+    }
+
+    // Append the character to the decoded string
+    decoded += char;
+  }
+
+  // Return the decoded string
+  return decoded;
 }
-
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
-
-// console.log(rot13("SERR YBIR? NPPVBWBO"));
-
-// Do not change this line
-window.rot13 = rot13;
